@@ -23,7 +23,7 @@ app.use(userRoute);
 app.use(offerRoutes);
 
 app.get("/", (req, res) => {
-  console.log("J'y suis arrivé!");
+  res.json("J'y suis arrivé!");
 });
 
 app.all("*", (req, res) => {

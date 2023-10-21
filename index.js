@@ -22,6 +22,10 @@ const offerRoutes = require("./routes/offer");
 app.use(userRoute);
 app.use(offerRoutes);
 
+app.get("/", (req, res) => {
+  console.log("J'y suis arrivé!");
+});
+
 app.all("*", (req, res) => {
   res.status(404).json({ message: "This route does not exist" });
 });

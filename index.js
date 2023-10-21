@@ -1,14 +1,14 @@
 require("dotenv").config();
 const express = require("express");
-const app = express();
 const cors = require("cors");
+const mongoose = require("mongoose");
 const cloudinary = require("cloudinary").v2;
-const mongoose = require("mongoose"); // package pour connecter mongo à une base de données que je vais créer
 
-app.use(express.json()); // pour que mon serveur accepte les données body
+const app = express();
+app.use(express.json());
 app.use(cors());
 
-mongoose.connect(process.env.MONGODB_URI); // connexion à ma base de donnée via mongo
+mongoose.connect(process.env.MONGODB_URI);
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,
@@ -18,9 +18,8 @@ cloudinary.config({
 });
 
 const userRoute = require("./routes/user");
-app.use(userRoute);
-
 const offerRoutes = require("./routes/offer");
+app.use(userRoute);
 app.use(offerRoutes);
 
 app.all("*", (req, res) => {

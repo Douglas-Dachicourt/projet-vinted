@@ -7,7 +7,7 @@ const uid2 = require("uid2"); // package qui sert à générer des string aléat
 
 const SHA256 = require("crypto-js/sha256"); // ce qui sert à encrypter une string
 
-const encBase64 = require("crypto-js/enc-Base64"); // sert à transformer l'encryptage en string
+const encBase64 = require("crypto-js/enc-base64"); // sert à transformer l'encryptage en string
 
 router.post("/user/signup", async (req, res) => {
   try {
@@ -48,7 +48,7 @@ router.post("/user/signup", async (req, res) => {
       _id: newUser._id,
       token: newUser.token,
       account: {
-        username: newUser.account.username,
+        username: newUser.account,
       },
     });
   } catch (error) {
